@@ -38,7 +38,7 @@ As a recent graduate living alone I want to be able to
     3. recommend recipies to other users 
 ----------------------------------------------------------
 ### Wireframes
-
+<img width="1308" alt="Screen Shot 2022-09-13 at 7 57 48 PM" src="https://user-images.githubusercontent.com/107972391/190050425-d468351a-28de-408e-9ebf-507b51c31bbb.png">
 
 ----------------------------------------------------------
 
