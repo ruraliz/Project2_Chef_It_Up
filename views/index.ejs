@@ -1,1 +1,12 @@
-<h2>Homepage</h2>
+<h1>Recipies Search</h1>
+<p>Search for a recipies below...</p>
+<div class="row">
+    <form action="/results" method="GET" role="form" class="col-md-10">
+        <div class="form-group">
+          <label for="q">Search Term</label>
+          <input name="q" class="form-control" id="q" aria-describedby="searchTermHelp" placeholder=" Recipie Search Term" required>
+          <small id="searchTermHelp" class="form-text text-muted">Type a term related to a recipie you want to lookup</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+</div>
