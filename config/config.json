@@ -1,11 +1,11 @@
 {
   "development": {
-    "database": "express_auth_dev",
+    "database": "Chef_It_Up",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "express_auth_test",
+    "database": "Chef_It_Up_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
