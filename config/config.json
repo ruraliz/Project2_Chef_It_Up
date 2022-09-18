@@ -1,11 +1,11 @@
 {
   "development": {
-    "database": "Chef_It_Up",
+    "database": "chef_it_up",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "Chef_It_Up_test",
+    "database": "chef_it_up",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
@@ -17,6 +17,6 @@
           "require": true,
           "rejectUnauthorized": false
         }
-    }
+      }
   }
 }

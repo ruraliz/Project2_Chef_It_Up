@@ -39,10 +39,13 @@ const options = {
       'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
     }
   };
-  
   axios.get("https://edamam-recipe-search.p.rapidapi.com/search",options).then(function (response) {
       console.log(response.data.hits);
-      res.render('results', {recipes: response.data.hits})
+    if (response.status === 200 && response.data.hits && response.data.hits.length) {
+        res.status(200).render('results', {recipes: response.data.hits});
+    } else {
+        res.status(404).render('404');
+    }
   }).catch(function (error) {
       console.error(error);
   });

@@ -2,20 +2,16 @@
 
 <table class="table table-bordered table-striped">
     <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Go to details</th>
-            <th scope="col">Poster</th>
-            <th scope="col">Title</th>
-            <th scope="col">Year</th>
-            <th scope="col">IMDBId</th>
-            <th scope="col">Type</th>
-        </tr>
     </thead>
     <tbody>
         <% for( let index = 0; index < recipes.length; index++ ) { %>
             <% let recipe = recipes[index] %> 
             <tr>
+                <th>
+                    <a type="button" href=<%= `/details/${recipe.Indrecipe}` %> class="btn btn-primary">
+                        <%= `See details for ID: ${recipe.Indrecipe}` %>
+                    </a>
+                </th>
                 <td><%= recipe.recipe.label %></td>
                 <td><img src=<%= recipe.recipe.image %>  alt=<%= recipe.recipe.label %>></td>
                 <td><%= recipe.recipe.label %></td>
