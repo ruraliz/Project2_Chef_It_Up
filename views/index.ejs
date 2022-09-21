@@ -1,6 +1,6 @@
-<h1>Recipies Search</h1>
+
 <p>Search for a recipies below...</p>
-<div class="row">
+<!-- <div class="row">
     <form action="/results" method="GET" role="form" class="col-md-10">
         <div class="form-group">
           <label for="q">Search Term</label>
@@ -9,4 +9,11 @@
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
-</div>
+</div> -->
+<nav class="navbar navbar-light bg-light">
+  <form action="/results" method="GET" role="form" class="form-inline">
+    <label for="q">Search Term</label>
+    <input name="q" id="q"class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>

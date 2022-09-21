@@ -8,8 +8,8 @@
             <% let recipe = recipes[index] %> 
             <tr>
                 <th>
-                    <a type="button" href=<%= `/details/${recipe.Indrecipe}` %> class="btn btn-primary">
-                        <%= `See details for ID: ${recipe.Indrecipe}` %>
+                    <a type="button" href=<%= `/details/${recipe.recipe.uri}` %> class="btn btn-primary">
+                        <%= `See details for ID: ${recipe.recipe.uri}` %>
                     </a>
                 </th>
                 <td><%= recipe.recipe.label %></td>
