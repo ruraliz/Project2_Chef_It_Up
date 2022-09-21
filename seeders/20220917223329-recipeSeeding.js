@@ -7,22 +7,20 @@ module.exports = {
 async up (queryInterface, Sequelize) {
   const seedDate = new Date().toISOString();
 
-  let fetchRecipesConfig = {
+  const fetchRecipesConfig = {
   method: 'GET',
   url: "https://edamam-recipe-search.p.rapidapi.com/search",
+  params: {q: 'chicken'},
   headers: {
   'X-RapidAPI-Key': '51e0b560ccmsh8d009f47562199fp1335f6jsn0ba290dccd71',
   'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
   }
 };
-
-
-
-// const recipesResponse = await axios.request(fetchRecipesConfig);
 const recipeRes = await axios.request(fetchRecipesConfig);
 const recipesToUpload= [];
 if(recipeRes.status === 200 && recipeRes?.data.hits) {
   recipeRes.data.hits.forEach(recipes => {
+    console.log(recipes)
     // if(recipeRes.status === 200 && recipeRes.data.hits) {
       recipesToUpload.push({
         recipeUri: recipes.recipe.uri,

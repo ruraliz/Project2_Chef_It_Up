@@ -17,7 +17,17 @@
                 <td><%= recipe.recipe.label %></td>
                 <td><%= recipe.recipe.uri %></td>
                 <td><%= recipe.recipe.ingredientLines[0] %></td>
+                <td> 
+                    <form method="POST" action="./results/recipes">
+                    <input name="uri" type="text" value=<%= recipe.recipe.uri %> hidden >
+                    <input name="label" type="text" value=<%= recipe.recipe.label %> hidden >
+                    <input name="totalTime" type="text" value=<%= recipe.recipe.totalTime %> hidden >
+                    <input name="calories" type="text" value=<%= recipe.recipe.calories %> hidden > 
+                    <button class="btn btn-primary" type="submit"> Add Recipe</button>
+                    </form>
+                </td>
             </tr>
+
         <% } %>
     </tbody>
 </table>

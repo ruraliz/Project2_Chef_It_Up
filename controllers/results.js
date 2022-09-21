@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const db = require('../models');
+const { seed } = require('@ngneat/falso');
 
 /*router.get('/', (req, res) => {
     const searchTerm= req.query.q
@@ -29,7 +31,7 @@ const axios = require('axios');
 });*/
 
 router.get('/', (req, res) => {
-    const searchTerm= req.query.q
+const searchTerm= req.query.q
 const options = {
     method: 'GET',
     /*url: "https://edamam-recipe-search.p.rapidapi.com/search",*/
@@ -50,4 +52,22 @@ const options = {
       console.error(error);
   });
   });
+
+router.post('/recipes', (req, res) => {
+    const seedDate = new Date().toISOString();
+    db.recipe.create({
+        recipeUri:req.body.uri,
+        dishName: req.body.label,
+        recipeTime: req.body.totalTime,
+        recipeCalories: req.body.calories,
+        createdAt: seedDate,
+        updatedAt: seedDate
+    })
+    .then( (newrecipes) => {
+        res.redirect('./newRecipe')
+    })
+    .catch(function (error) {
+    console.error(error);
+});   
+})
 module.exports = router;
