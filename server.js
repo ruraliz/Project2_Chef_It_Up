@@ -45,9 +45,10 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', { id, name, email });
 });
 
-app.use('/results', require('./controllers/results'))
+app.use('/results', isLoggedIn, require('./controllers/results'))
 
-app.use('/details', require('./controllers/details'))
+app.use('/details', isLoggedIn, require('./controllers/details'))
+app.use('/recipes', isLoggedIn, require('./controllers/recipes'))
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

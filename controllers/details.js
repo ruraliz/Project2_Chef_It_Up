@@ -2,18 +2,20 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-router.get('/:uri', (req, res) => {
+router.get('/', (req, res) => {
     const options = {
-        // url: "https://edamam-recipe-search.p.rapidapi.com/search",
-       params: {i: req.params.uri,
-      'X-RapidAPI-Key': '51e0b560ccmsh8d009f47562199fp1335f6jsn0ba290dccd71',
-      'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
-        }
-      };
+      url: "https://edamam-recipe-search.p.rapidapi.com/search",
+       params: {q: req.params.q},
+      headers: {
+        'X-RapidAPI-Key': '51e0b560ccmsh8d009f47562199fp1335f6jsn0ba290dccd71',
+        'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
+      }
+    };
 
       axios.get("https://edamam-recipe-search.p.rapidapi.com/search", options).then(function (response) {
+        console.log(response.data)
         console.log(response.data.hits);
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.hits && response.data.hits.length) {
           res.render('details', {recipes: response.data.hits});
           console.log(recipes)
       } else {

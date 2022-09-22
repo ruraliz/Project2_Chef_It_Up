@@ -9,7 +9,7 @@
             <tr>
                 <th>
                     <a type="button" href=<%= `/details/${recipe.recipe.uri}` %> class="btn btn-primary">
-                        <%= `See details for ID: ${recipe.recipe.uri}` %>
+                        <%= `See details for ID: ${recipe.recipe.label}` %>
                     </a>
                 </th>
                 <td><%= recipe.recipe.label %></td>
@@ -18,11 +18,12 @@
                 <td><%= recipe.recipe.uri %></td>
                 <td><%= recipe.recipe.ingredientLines[0] %></td>
                 <td> 
-                    <form method="POST" action="./results/recipes">
-                    <input name="uri" type="text" value=<%= recipe.recipe.uri %> hidden >
-                    <input name="label" type="text" value=<%= recipe.recipe.label %> hidden >
-                    <input name="totalTime" type="text" value=<%= recipe.recipe.totalTime %> hidden >
-                    <input name="calories" type="text" value=<%= recipe.recipe.calories %> hidden > 
+                    <form method="POST" action="/recipes">
+                    <input name="recipeUri" type="text" value=<%= recipe.recipe.uri %> hidden >
+                    <input name="dishName" type="text" value=<%= recipe.recipe.label %> hidden >
+                    <input name="recipeTime" type="text" value=<%= recipe.recipe.totalTime %> hidden >
+                    <input name="recipeCalories" type="text" value=<%= recipe.recipe.calories %> hidden > 
+                    <input name="userId" type="text" value=<%= currentUser.id %> hidden >
                     <button class="btn btn-primary" type="submit"> Add Recipe</button>
                     </form>
                 </td>

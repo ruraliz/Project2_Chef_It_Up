@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      models.user.hasMany(models.recipe)
+      models.user.hasMany(models.comment)
       // define association here
     }
   }
