@@ -1,6 +1,7 @@
 'use strict';
 
-const axios= require('axios')
+const axios= require('axios');
+const recipe = require('../models/recipe');
 
 
 module.exports = {
@@ -27,6 +28,11 @@ if(recipeRes.status === 200 && recipeRes?.data.hits) {
         dishName: recipes.recipe.label,
         recipeTime: recipes.recipe.totalTime,
         recipeCalories: recipes.recipe.calories,
+        ingredients: recipes.recipe.ingredientLines[0],
+        url: recipes.recipe.url,
+        dietLabels:recipes.recipe.dietLabels[0],
+        mealType: recipes.recipe.mealType,
+        cuisine: recipes.recipe.cuisineType,
         createdAt: seedDate,
         updatedAt: seedDate
       })

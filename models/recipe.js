@@ -12,15 +12,21 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       models.recipe.belongsTo(models.user)
       models.recipe.hasMany(models.comment)
-      // define association here
     }
   }
   recipe.init({
     recipeUri: DataTypes.STRING,
     dishName: DataTypes.STRING,
-    recipeTime: DataTypes.STRING,
-    recipeCalories: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    recipeTime: DataTypes.INTEGER,
+    recipeCalories: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
+    img: DataTypes.STRING,
+    ingredients: DataTypes.STRING,
+    url: DataTypes.STRING,
+    dietLabels: DataTypes.STRING,
+    totalNutrients: DataTypes.STRING,
+    mealType: DataTypes.STRING,
+    cuisine: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'recipe',

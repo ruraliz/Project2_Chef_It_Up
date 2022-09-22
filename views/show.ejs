@@ -1,6 +1,59 @@
 <h1>this shows 1 recipe</h1>
-<%=recipe.recipe.label %></td>
-                <img src=<%= recipe.recipe.image %>  alt=<%= recipe.recipe.label %>>
-                <%= recipe.recipe.label %>
-                <%= recipe.recipe.uri %>
-                <%= recipe.recipe.ingredientLines[0] %>
+
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Cover Template · Bootstrap v5.2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-bg-dark">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Recipe</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
+        <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
+        <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <h1><%= recipe.dishName %> </h1>
+    <p class="lead"><%= song.ingredients %> </p>
+    <img src="<%= recipe.img %> " class="img-fluid" alt="...">
+    <br>
+    <br>
+    <p class="lead">
+      <a href="/recipes" class="btn btn-lg btn-secondary fw-bold border-white bg-blue">View All recipes</a>
+      <% if (recipe.url) {%> 
+        <a href="<%= recipe.url %>" class="btn btn-lg btn-secondary fw-bold border-white bg-blue" target="_blank">View Recipe Link</a>
+      <% } %> 
+    </p>
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
+
+
+    
+  </body>
+</html>

@@ -7,37 +7,47 @@ const recipe = require('../models/recipe');
 
 
 
-// router.get('/', async (req,res) => {
-//     let recipes = await db.recipe.findAll();
-//     // recipes= recipe.map( r => r.toJSON())
-//     res.render('/profile', {recipes: recipes})
-// })
+router.get('/', async (req,res) => {
+    let recipes = await db.recipe.findAll();
+    recipes= recipes.map( r => r.toJSON())
+    res.render('profile', {recipes: recipes})
+})
 
+router.get('/search', async (req,res) => {
+    res.render('search')
+})
 
-// // get one recipe at time 
-// router.get('/:id', async (req, res) => {
-//     let recipe = await db.recipe.findOne ({
-//         where: {id:req.params.id}
-//     })
-//     recipe = recipe.toJSON();
-//     console.log(recipe);
-//     res.render('/show', {recipes: recipes})
-//     })
+//get one recipe at time 
+router.get('/:id', async (req, res) => {
+    let recipe = await db.recipe.findOne ({
+        where: {id:req.params.id}
+    })
+    recipe = recipe.toJSON();
+    console.log(recipe);
+    res.render('show', {recipe: recipe})
+    })
 
-router.post('/', (req, res) => {
+router.post('/new', async (req, res) => {
+    console.log(req.body)
     const seedDate = new Date().toISOString();
-    const newRecipe = db.recipe.create({
+    const newRecipe = await db.recipe.create({
         recipeUri:req.body.uri,
         dishName: req.body.label,
-        recipeTime: req.body.totalTime,
-        recipeCalories: req.body.calories,
-        userId: req.body.userId,
+        recipeTime: parseInt(req.body.recipeTime),
+        recipeCalories: parseInt(req.body.recipeCalories),
+        userId: parseInt(req.body.userId),
+        img:req.body.img,
+        url: req.body.url,
+        ingredients: req.body.ingredients,
+        totalNutrients: req.body.totalNutrients,
+        dietLabels: req.body.dietLabels,
+        mealType: req.body.mealType,
+        cuisine: req.body.cuisine,
         createdAt: seedDate,
         updatedAt: seedDate
     })
     .then( (recipes) => {
-        res.redirect('/profile')
-        console.log(newRecipe) 
+        res.redirect('/recipes')
     })
     .catch(function (error) {
        res.status(404).render('404') 
@@ -45,6 +55,32 @@ router.post('/', (req, res) => {
 }); 
 console.log(newRecipe)  
 })
+
+router.post('/results', (req, res) => {
+    console.log(req.body)
+    const searchTerm= req.body.q
+    const options = {
+        method: 'GET',
+        url: "https://edamam-recipe-search.p.rapidapi.com/search",
+        params: {q: searchTerm},
+        headers: {
+          'X-RapidAPI-Key': '51e0b560ccmsh8d009f47562199fp1335f6jsn0ba290dccd71',
+          'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
+        }
+      };
+      axios.get("https://edamam-recipe-search.p.rapidapi.com/search",options).then(function (response) {
+          console.log(response.data.hits);
+        if (response.status === 200 && response.data.hits && response.data.hits.length) {
+            res.status(200).render('results', {recipes: response.data.hits});
+        } else {
+            res.status(404).render('404');
+        }
+      }).catch(function (error) {
+          console.error(error);
+      });
+      });
+
+
 
 
 // router.post('/:id/comment', (req, res) => {

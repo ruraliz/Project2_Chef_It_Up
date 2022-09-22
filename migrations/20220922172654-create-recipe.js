@@ -15,13 +15,34 @@ module.exports = {
         type: Sequelize.STRING
       },
       recipeTime: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       recipeCalories: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       userId: {
         type: Sequelize.INTEGER
+      },
+      img: {
+        type: Sequelize.STRING
+      },
+      ingredients: {
+        type: Sequelize.STRING
+      },
+      url: {
+        type: Sequelize.STRING
+      },
+      dietLabels: {
+        type: Sequelize.STRING
+      },
+      totalNutrients: {
+        type: Sequelize.STRING
+      },
+      mealType: {
+        type: Sequelize.STRING
+      },
+      cuisine: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
