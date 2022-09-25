@@ -10,21 +10,22 @@ const recipe = require('../models/recipe');
 router.get('/', async (req,res) => {
     let recipes = await db.recipe.findAll();
     recipes= recipes.map( r => r.toJSON())
-    res.render('profile', {recipes: recipes})
+    res.render('recipes/index', {recipes: recipes})
 })
 
 router.get('/search', async (req,res) => {
-    res.render('search')
+    res.render('recipes/search')
 })
 
 //get one recipe at time 
 router.get('/:id', async (req, res) => {
     let recipe = await db.recipe.findOne ({
-        where: {id:req.params.id}
+        where: {id:req.params.id},
+        include:[db.comment]
     })
     recipe = recipe.toJSON();
     console.log(recipe);
-    res.render('show', {recipe: recipe})
+    res.render('recipes/show', {recipe: recipe, comments: recipe.comments})
     })
 
 router.post('/new', async (req, res) => {
@@ -51,10 +52,34 @@ router.post('/new', async (req, res) => {
     })
     .catch(function (error) {
        res.status(404).render('404') 
-    console.error(error);
-}); 
-console.log(newRecipe)  
+    console.error(error);  
 })
+})
+
+router.post('/:id/comments', async (req, res) => {
+    const createdDate = new Date().toISOString();
+    await db.recipe.findOne({
+      where: { id: req.params.id }
+    })
+    .then((recipe) => {
+      if (!recipe) throw Error()
+        db.comment.create({
+        recipeId: parseInt(req.params.id),
+        userId: parseInt(req.params.id),
+        name: req.body.name,
+        content: req.body.content,
+        createdAt: createdDate,
+        updatedAt: createdDate
+      }).then(comment => {
+        res.redirect(`/recipes/${req.params.id}`);
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).render('main/404')
+    })
+  })
+  
 
 router.post('/results', (req, res) => {
     console.log(req.body)
@@ -71,7 +96,7 @@ router.post('/results', (req, res) => {
       axios.get("https://edamam-recipe-search.p.rapidapi.com/search",options).then(function (response) {
           console.log(response.data.hits);
         if (response.status === 200 && response.data.hits && response.data.hits.length) {
-            res.status(200).render('results', {recipes: response.data.hits});
+            res.status(200).render('recipes/results', {recipes: response.data.hits});
         } else {
             res.status(404).render('404');
         }
@@ -80,44 +105,17 @@ router.post('/results', (req, res) => {
       });
       });
 
+      router.delete('/:id', async (req, res) => {
+        console.log('delete recipe')
+    
+        let recipesDeleted = await db.recipe.destroy({
+            where: { id: req.params.id }
+        });
+        console.log('==== this is the delete route ======');
+        console.log('Amount of recipes deleted', recipesDeleted);
+        res.redirect('/recipes');
+    });
+    
 
-
-
-// router.post('/:id/comment', (req, res) => {
-//     const createdDate = new Date().toISOString();
-//     db.article.findOne({
-//       where: { id: req.params.id }
-//     })
-//     .then((article) => {
-//       if (!article) throw Error()
-//       db.comment.create({
-//         articleId: parseInt(req.params.id),
-//         name: req.body.name,
-//         content: req.body.content,
-//         createdAt: createdDate,
-//         updatedAt: createdDate
-//       }).then(comment => {
-//         res.redirect(`/articles/${req.params.id}`);
-//       })
-//     })
-//     .catch((error) => {
-//       console.log(error)
-//       res.status(400).render('main/404')
-//     })
-//   })
-  
-// router.delete('/:idx', (req, res) => {
-//     const birds = fs.readFileSync('./birds.json');
-//     const birdData = JSON.parse(birds);
-  
-//     // remove the deleted dinosaur from the dinosaurs array
-//     birdData.splice(req.params.idx, 1)
-  
-//     // save the new dinosaurs to the data.json file
-//     fs.writeFileSync('./birds.json', JSON.stringify(birdData));
-  
-//     //redirect to the GET /dinosaurs route (index)
-//     res.redirect('/birds');
-//   });
 
 module.exports = router;

@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       img: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(2000)
       },
       ingredients: {
         type: Sequelize.STRING

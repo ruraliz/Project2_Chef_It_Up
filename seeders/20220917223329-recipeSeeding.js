@@ -11,7 +11,7 @@ async up (queryInterface, Sequelize) {
   const fetchRecipesConfig = {
   method: 'GET',
   url: "https://edamam-recipe-search.p.rapidapi.com/search",
-  params: {q: 'chicken'},
+  params: {q: 'mac and cheese'},
   headers: {
   'X-RapidAPI-Key': '51e0b560ccmsh8d009f47562199fp1335f6jsn0ba290dccd71',
   'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com'
@@ -28,9 +28,10 @@ if(recipeRes.status === 200 && recipeRes?.data.hits) {
         dishName: recipes.recipe.label,
         recipeTime: recipes.recipe.totalTime,
         recipeCalories: recipes.recipe.calories,
+        img: recipes.recipe.image,
         ingredients: recipes.recipe.ingredientLines[0],
         url: recipes.recipe.url,
-        dietLabels:recipes.recipe.dietLabels[0],
+        dietLabels: recipes.recipe.dietLabels[0],
         mealType: recipes.recipe.mealType,
         cuisine: recipes.recipe.cuisineType,
         createdAt: seedDate,
