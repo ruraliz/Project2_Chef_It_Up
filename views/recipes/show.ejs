@@ -69,7 +69,11 @@
 <div class="row">
   <div class="well">
     <% comments.forEach(function(comment) {%>
-      <h4><%= comment.name%> <small><%=comment.content %> </small></h4>
+      <h4><%= comment.name%></h4>
+      <div class="form-floating">
+        <textarea <%= comment.content %> class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Comments</label>
+      </div>
       <div class="panel-footer">
         <b>posted at:</b> <%= comment.updatedAt %>
       </div>

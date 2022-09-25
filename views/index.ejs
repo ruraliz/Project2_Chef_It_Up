@@ -10,14 +10,14 @@
 </head>
 <body>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
+        
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
       
-        <!-- Wrapper for slides -->
+    
         <div class="carousel-inner" role="listbox">
           <div class="item active">
             <img src="ny.jpg" alt="New York">
@@ -44,7 +44,7 @@
           </div>
         </div>
       
-        <!-- Left and right controls -->
+      
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
@@ -62,17 +62,13 @@
   <br>
   <div class="row">
     <div class="col-sm-4">
-      <p><strong>Name</strong></p><br>
-      <img src="/Users/lizrurangwa/Desktop/general-assembly/unit-2/deliverables/Project2_Chef_It_Up/views/mac and cheese.jpeg" alt="Random Name">
+      <img src="assets/jollof and plantain.jpg" alt="Random Name">
     </div>
     <div class="col-sm-4">
-      <p><strong>Name</strong></p><br>
-      <img src="views/Jollof_Rice_recipe.jpg" alt="Random Name">
+    <img src= "assets/mac and cheese.jpeg"   alt="...">
     </div>
-    <img src="views/Jollof_Rice_recipe.jpg" alt="..." class="img-thumbnail">
-  </div>
-  <div class="text-center">
-    <img src="views/Jollof_Rice_recipe.jpg" class="rounded" alt="...">
+  <div class="col-sm-4">
+    <img src=  "assets/thanksgiving.jpg"alt="...">
   </div>
 </div>
 <div class="container">
@@ -104,5 +100,35 @@
     </div>
   </div>
 
-</body>
-</html>
+<style>
+  footer {
+    background-color: #2d2d30;
+    color: #f5f5f5;
+    padding: 32px;
+  }
+  
+  footer a {
+    color: #f5f5f5;
+  }
+  
+  footer a:hover {
+    color: #777;
+    text-decoration: none;
+  }
+  </style>
+  
+  <footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <p>Bootstrap Theme Made By <a href="/recipes" data-toggle="tooltip" title="Visit w3schools">/recipes</a></p> 
+  </footer>
+  
+  <script>
+  $(document).ready(function(){
+    // Initialize Tooltip
+    $('[data-toggle="tooltip"]').tooltip(); 
+  })
+  </script>
+ </body>
+</html> 
