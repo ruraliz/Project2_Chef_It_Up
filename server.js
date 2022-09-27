@@ -42,6 +42,9 @@ app.get('/', (req, res) => {
 //access to all of our auth routes GET/auth/login GET auth/signup POST routes
 app.use('/auth', require('./controllers/auth'));
 
+app.get('/about', (req, res) => {
+  res.render('about')
+})
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
@@ -49,7 +52,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', { id, name, email });
 });
 
-app.get('/profile/edit', isLoggedIn, async (req, res) => {
+app.get('/edit', isLoggedIn, async (req, res) => {
   res.render('edit')
 })
 app.put('/profile/:id' , isLoggedIn, async(req, res) => {
@@ -74,6 +77,7 @@ res.render('edit');
 // app.use('/details', isLoggedIn, require('./controllers/details'))
 
 app.use('/recipes', isLoggedIn, require('./controllers/recipes'))
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

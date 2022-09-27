@@ -1,9 +1,19 @@
-<h2>Profile Page</h2>
 
-<h3>Welcome to your PROFILE</h3>
+<style>
+    .logo {
+        font-size: 100px;
+        color: #b60ed0d0;
+    }
+</style>
+<div class="py-5 text-center container" >
+    <h2>Welcome to your PROFILE</h2> 
+<div class="container-fluid bg-grey">
+    <div class="row">
+      <div class="col-sm-4">
+       <span class="glyphicon glyphicon-user logo"></span>
+      </div>
+<h4>Id: <%= currentUser.id %></h4>
+<h4>Name: <%= currentUser.name %></h4>
+<h4>Email: <%= currentUser.email %></h4>
 
-<p>Id: <%= currentUser.id %></p>
-<p>Name: <%= currentUser.name %></p>
-<p>Email: <%= currentUser.email %></p>
-
-
+</div>

@@ -9,6 +9,9 @@
     <title>Album example · Bootstrap v5.2</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     
 
@@ -29,13 +32,13 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          <p class="text-muted">This website was made for people like myself who spend hours trying to figure out what to cook and just end up ordering food. I hope this method of finding easy recipes online will help you and encourage you to cook more at home.</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
+          <h4 class="text-white"></h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
+            <li><a href="/profile" class="text-white">My account</a></li>
+            <li><a href="/edit" class="text-white">Edit name/email</a></li>
             <li><a href="#" class="text-white">Email me</a></li>
           </ul>
         </div>
@@ -45,8 +48,10 @@
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        </svg>
+        <strong>My recipes</strong>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,10 +66,10 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Favorite recipes</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p class="lead text-muted">This is a library for you to add your favorite recipes or recipes that you might want to make for special aucasions in the future</p>
         <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          <a href="/profile" class="btn btn-primary my-2">Go to Profile</a>
+          <a href="/about" class="btn btn-secondary my-2">Learn more about our story</a>
         </p>
       </div>
     </div>
@@ -77,23 +82,20 @@
         <% recipes.forEach(r => {  %> 
             <div class="col">
                 <div class="card shadow-sm">
-                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<%= r.img %>  ">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="350" src="<%= r.img %>  ">
                   <div class="card-body">
-                    <p class="card-text"><%= r.dishName %> - <%= r.url %></p>
-                    <p class="card-text"><%= r.recipeUri%> </p>
-                    <p class="card-text"><%= r.recipeTime%> </p>
-                    <p class="card-text"><%= r.calories%> </p>
-                    <a type="button" class="btn btn-sm btn-outline-secondary" href="/recipes/<%= r.id %>">View full recipe</a>
+                    <h4><%= r.dishName %></h4>
+                    <h6><%= r.mealType%></h6>
+                    <h6><%= r.cuisine%> Cuisine</h6>
+                    <h6><%= r.recipeCalories%> Calories</h6>
+                    <a type="button" class="btn btn-sm btn-outline-secondary" href="/recipes/<%= r.id %>">full recipe</a>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <!-- Form for deleting a recipe from list -->
                         <form method="POST" action="/recipes/<%= r.id %>/?_method=DELETE">
-                          
                           <button type="submit" type="button" class="btn btn-sm btn-outline-secondary">Remove</button>
                       </form>
-                    
                       </div>
-                      <small class="text-muted">9 mins</small>
                     </div>
                   </div>
                 </div>

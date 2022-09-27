@@ -32,14 +32,14 @@ router.post('/new', async (req, res) => {
     console.log(req.body)
     const seedDate = new Date().toISOString();
     const newRecipe = await db.recipe.create({
-        recipeUri:req.body.uri,
-        dishName: req.body.label,
+        recipeUri:req.body.recipeUri,
+        dishName:req.body.dishName,
         recipeTime: parseInt(req.body.recipeTime),
         recipeCalories: parseInt(req.body.recipeCalories),
         userId: parseInt(req.body.userId),
         img:req.body.img,
         url: req.body.url,
-        ingredients: req.body.ingredients,
+        ingredients: req.body.listIngredients,
         totalNutrients: req.body.totalNutrients,
         dietLabels: req.body.dietLabels,
         mealType: req.body.mealType,
