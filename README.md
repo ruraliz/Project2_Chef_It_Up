@@ -85,7 +85,7 @@ git commit -m "Install dependencies for project"
 ## The APP 
 <img src= "assets/home.jpg">
 <img src= "assets/myfav.jpg">
-<img src= "assets/about.jpg">
+<img src= "public/assets/about.png">
 <img src= "assets/ind.jpg">
 
 
@@ -644,93 +644,4 @@ The purpose of these partials ( `views` ) is to render the `flash` alerts to the
 
 `2` Create a file called **`alerts.ejs`** inside of the `partials` folder
 
-`3` Create two conditionals that will look for `error` flash messages or `success` flash messages that were created in various routes. We will be adding classes on these messages to display in **green** for success messages and **red** for error messages
-
-```ejs
-<% if (alerts.error) { %>
-    <% alerts.error.forEach(msg => { %>
-        <div class="alert alert-danger"><%= msg %></div>
-   <% }) %>
-<% } %>
-
-<% if (alerts.success) { %>
-    <% alerts.success.forEach(msg => { %>
-        <div class="alert alert-success"><%= msg %></div>
-   <% }) %>
-<% } %>
-```
-
-`4` Include the `alert` partials inside of the `layout.ejs` file at the beginning of the body
-
-```js
-<%- include('partials/alerts') %>
-```
-
-`5` Make *commit* message
-```text
-git add .
-git commit -m "alerts: add partials for flash alerts"
-```
-
-## `14` Add Logic to Layout Page For User
-The purpose of building out this logic will be to display on the page whether or not the user is logged in or not. If the user is logged in, then we would remove a link for logging in or signup. If the user is not logged in, the we will display the links for the user to log in or sign up.
-
-`1` Add conditional logic to display links for being logged in or not inside of `layout.ejs`
-```ejs
-<% if (!currentUser) {%>
-    <li><a href="/auth/signup">Signup</a></li>
-    <li><a href="/auth/login">Login</a></li>
-<% } else { %>
-    <li><a href="/auth/logout">Logout</a></li>
-    <li><a href="/profile">Profile</a></li>
-<% } %>
-```
-
-`2` Double check **`layout.ejs`** to make sure it looks like ( [this](https://github.com/romebell/express_authentication/blob/main/solutions.md#2-layoutejs) )
-
-## `15` Add Profile View and Controller
-The purpose of this step is to add a view and controller for a user to see their information on a profile page. We will to build a GET route to `/profile` that will send the user data to the `profile.ejs` to be displayed whenever a user logs in.
-
-`1` Create a GET route to `/profile` and include `isLoggedIn` middleware to check to see if user is logged in beforehand inside of `server.js`
-
-```js
-// Add this above /auth controllers
-app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
-});
-```
-
-`2` Add user `id`, `name`, `email` to the **`profile.ejs`**
-
-```ejs
-<h2>Profile Page</h2>
-
-<h3>Welcome to your PROFILE</h3>
-
-<p>Id: <%= id %></p>
-<p>Name: <%= name %></p>
-<p>Email: <%= email %></p>
-```
-
-`2` Run **`mocha`** to see how many tests passed
-
-`3` Make *commit* message
-```text
-git add .
-git commit -m "profile: add route and send data to view page"
-```
-
-## `16` Start App and Debug
-
-`1` Start up server and test app
-
-```text
-npm start
-```
-
-`2` Complete any debugging that needs to happen.
-
-`3` Push final changes to Github.
-
-`4` Make this repo a **Template** on Github for future projects (i.e. Project 2) ✅ -->
+`3` Create two conditionals that will look for `error` flash messages or `success` flash messages that were created in various routes. We will be adding classes on these messages to display in **green** for success messages and **red** for error messages -->
