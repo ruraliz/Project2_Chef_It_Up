@@ -83,10 +83,10 @@ git add .
 git commit -m "Install dependencies for project"
 ```
 ## The APP 
-<img src= "assets/home.jpg">
-<img src= "assets/myfav.jpg">
+<img src= "public/assets/home.png">
+<img src= "public/assets/myfav.png">
 <img src= "public/assets/about.png">
-<img src= "assets/ind.jpg">
+<img src= "public/assets/ind.png">
 
 
 
