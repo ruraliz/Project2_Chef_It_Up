@@ -1,6 +1,12 @@
-# `Express Authentication`
+# Chef It Up 
 
-Express authentication template using Passport + Flash messages + custom middleware
+This app was made to create a quick and easy way for people who love or want to cook more from home to be able to access a variety of recipes. 
+
+#### Backstory: BlogPulse
+
+As a recent college graduate, I found myself for the first time in a situation where I was at home alone having to cook for myself every day. Not only did I start to run out of ideas, the ingredients in my fridge often went to waste and I ended up ordering food online, which is both expensive and unhealthy. Through this app I hope that other people in similar situation as me can find it easy to access many different recipes out there. 
+
+
 
 ## What it includes
 
@@ -11,6 +17,10 @@ Express authentication template using Passport + Flash messages + custom middlew
 * Flash messages for errors and successes
 * Passwords that are hashed with BCrypt
 * EJS Templating and EJS Layouts
+* CSS 
+* Bootstrap
+* ORM
+
 
 ### User Model
 
@@ -33,7 +43,17 @@ Express authentication template using Passport + Flash messages + custom middlew
 | POST | /auth/login | auth.js | Login user |
 | POST | /auth/signup | auth.js | Creates User |
 | GET | /auth/logout | auth.js | Removes session info |
-| GET | /profile | server.js | Regular User Profile |
+| PUT| /edit | server.js | user can edit their name/email |
+| DELETE | /recipes | recipes.js | User can delete recipe from database |
+| POST | /:id/comment | recipes.js | user can add comment on individual recipes |
+
+## User Stories db
+
+As a new member of cooking from home team I want to be able to
+    1. Search up food recepies based on my current diet 
+    2. Save my favorite recipies for future use 
+    3. Comment on recipes and delete recipes I no longer need from my favorite list 
+
 
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
@@ -62,7 +82,15 @@ npm install bcryptjs connect-flash passport passport-local express-session metho
 git add .
 git commit -m "Install dependencies for project"
 ```
+## The APP 
+<img src= "assets/home.jpg">
+<img src= "assets/myfav.jpg">
+<img src= "assets/about.jpg">
+<img src= "assets/ind.jpg">
 
+
+
+<!-- 
 ## `2` Create Database & Update Sequelize Config
 
 `1` Update **`config.json`** file with the following:
@@ -705,4 +733,4 @@ npm start
 
 `3` Push final changes to Github.
 
-`4` Make this repo a **Template** on Github for future projects (i.e. Project 2) ✅
+`4` Make this repo a **Template** on Github for future projects (i.e. Project 2) ✅ -->
