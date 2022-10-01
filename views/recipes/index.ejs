@@ -19,8 +19,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-   
-    <!-- Custom styles for this template -->
+  
     <link href="css/recipes.css" rel="stylesheet">
     
   </head>
@@ -38,8 +37,7 @@
           <h4 class="text-white"></h4>
           <ul class="list-unstyled">
             <li><a href="/profile" class="text-white">My account</a></li>
-            <li><a href="/edit" class="text-white">Edit name/email</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
+            <li><a href="/profile/edit" class="text-white">Edit name/email</a></li>
           </ul>
         </div>
       </div>
@@ -91,7 +89,7 @@
                     <a type="button" class="btn btn-sm btn-outline-secondary" href="/recipes/<%= r.id %>">full recipe</a>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <!-- Form for deleting a recipe from list -->
+                       
                         <form method="POST" action="/recipes/<%= r.id %>/?_method=DELETE">
                           <button type="submit" type="button" class="btn btn-sm btn-outline-secondary">Remove</button>
                       </form>
@@ -114,8 +112,8 @@
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+    <p class="mb-1">My recipes</p>
+    <p class="mb-0"><a href="/">Back to home page</a></p>
   </div>
 </footer>
 

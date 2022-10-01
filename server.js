@@ -52,32 +52,37 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', { id, name, email });
 });
 
-app.get('/edit', isLoggedIn, async (req, res) => {
+app.get('/profile/edit', isLoggedIn, async (req, res) => {
   res.render('edit')
 })
-app.put('/profile/:id' , isLoggedIn, async(req, res) => {
-  try{
-  const usersUpdated = await 
-  db.user.update({
-    email:req.body.emal,
-    name:req.body.name
-  }, {
-    where: {id:req.params.id}
-  })
- console.log('user updated', usersUpdated);
- res.redirect('/profile');
-}catch (error) {
-console.log('*******ERROR*******')
-console.log(error)
-res.render('edit');
-}
-})
-// app.use('/results', isLoggedIn, require('./controllers/results'))
+app.put('/profile/:id', isLoggedIn, async (req, res) => {
+  try {
+      const foundUser = await db.user.findOne({ where: { email: req.body.email }});
+      if (foundUser.email && foundUser.id !== req.user.id) {
+        req.flash('error', 'Email already exists. Please try again.');
+        res.redirect('/profile');
+      } else {
+        const usersUpdated = await db.user.update({
+          email: req.body.email,
+          name: req.body.name
+        }, {
+          where: {
+            id: req.params.id
+          }
+        });
 
-// app.use('/details', isLoggedIn, require('./controllers/details'))
+        res.redirect('/profile'); 
+      }
+  } catch (error) {
+    res.render('edit');
+  }
+});
 
 app.use('/recipes', isLoggedIn, require('./controllers/recipes'))
 
+app.get('*', (req, res) => {
+  res.render('404');
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

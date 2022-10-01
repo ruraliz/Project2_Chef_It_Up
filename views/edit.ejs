@@ -1,7 +1,8 @@
-<form method="POST" action="/profile/edit/<%= currentUser.id %>/?_method=PUT">
-    <label> <span class="glyphicon glyphicon-pencil"></span>Name</label>
+<%- include('partials/alerts') %> 
+<form method="POST" action="/profile/<%= currentUser.id %>/?_method=PUT">
+    <label>Name</label><span class="glyphicon glyphicon-pencil"></span>
     <input type="text" name="name" value="<%= currentUser.name %>">
-    <label><span class="glyphicon glyphicon-pencil"></span>Email</label>
+    <label>Email</label><span class="glyphicon glyphicon-pencil"></span>
     <input type="text" name="email" value="<%= currentUser.email %>">
     <input type="submit">
 </form>

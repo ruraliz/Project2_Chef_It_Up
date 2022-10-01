@@ -20,14 +20,14 @@
                         <% const ingredients = recipe.recipe.ingredientLines%>
                         <% for( let i=0; i < ingredients.length; i++) { %>
                     <%= ingredients[i] %>
-                     
-                    <input type="text" value=<%= JSON.stringify(recipe.recipe.ingredients[i])%> name="listIngredients" hidden > 
+                
+                    <input type="text" value=<%= (JSON.stringify(recipe.recipe.ingredients[i])).split(' ').join('-')%> name="listIngredients" hidden > 
                     <%}%>
                 </td>  
                  <td>      
                     <input type="text" value=<%= recipe.recipe.image%> name="img" hidden > 
                     <input type="text" value=<%= recipe.recipe.uri %> name="recipeUri" hidden >
-                    <input type="text" value=<%= recipe.recipe.label %> name="dishName" hidden >
+                    <input type="text" value=<%= (recipe.recipe.label).split(' ').join('-') %> name="dishName" hidden >
                     <input type="text" value=<%= recipe.recipe.url %> name="url" hidden >
                     <input type="text" value=<%= recipe.recipe.totalTime %> name="recipeTime" hidden >
                     <input type="text" value=<%= recipe.recipe.calories %> name="recipeCalories" hidden >

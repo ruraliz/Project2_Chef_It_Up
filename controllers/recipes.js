@@ -17,7 +17,7 @@ router.get('/search', async (req,res) => {
     res.render('recipes/search')
 })
 
-//get one recipe at time 
+
 router.get('/:id', async (req, res) => {
     let recipe = await db.recipe.findOne ({
         where: {id:req.params.id},

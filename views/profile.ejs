@@ -2,8 +2,13 @@
 <style>
     .logo {
         font-size: 100px;
-        color: #b60ed0d0;
-    }
+        color: #2e0ed0d0;
+    } 
+    .edit{
+        font-size: 20px;
+        color:#0e8cd0d0
+    }   
+    
 </style>
 <div class="py-5 text-center container" >
     <h2>Welcome to your PROFILE</h2> 
@@ -15,5 +20,6 @@
 <h4>Id: <%= currentUser.id %></h4>
 <h4>Name: <%= currentUser.name %></h4>
 <h4>Email: <%= currentUser.email %></h4>
-
 </div>
+<div><a href="/profile/edit" class="edit">Edit name/email</a></div>
+

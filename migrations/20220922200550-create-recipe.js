@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       dishName: {
-        type: Sequelize.TEXT
+        type: Sequelize.CHAR(100)
       },
       recipeTime: {
         type: Sequelize.INTEGER
@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.STRING(2000)
       },
       ingredients: {
-        type: Sequelize.ARRAY(Sequelize.BLOB)
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       url: {
         type: Sequelize.STRING

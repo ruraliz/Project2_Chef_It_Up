@@ -1,8 +1,5 @@
 const db = require('./models');
 
-// Implement CRUD for user model
-
-// CREATE
 async function createUser() {
     try {
         const newUser = await db.user.create({
@@ -15,10 +12,6 @@ async function createUser() {
     }
     
 }
-// @todo run createUser function below
-
-// READ
-// find one user
 async function findOneUser() {
     try {
         const user = await db.user.findOne({
@@ -29,9 +22,7 @@ async function findOneUser() {
         console.log('did not find user b/c of >>>', error);
     }
 }
-// @todo run findOneUser function below
 
-// find all users
 async function findAllUsers() {
     try {
         const users = await db.user.findAll();
@@ -40,9 +31,7 @@ async function findAllUsers() {
         console.log('did not find all users because of >>>', error);
     }
 }
-// @todo run findAllUsers function below
 
-// find one user
 async function findOrCreate() {
     try {
         const users = await db.user.findOrCreate({
@@ -56,9 +45,7 @@ async function findOrCreate() {
         console.log('did not find all users because of >>>', error);
     }
 }
-// @todo run findOrCreate function below
 
-// UPDATE
 async function updateUser() {
     try {
         const numRowsUpdated = await db.user.update({
@@ -73,9 +60,7 @@ async function updateUser() {
         console.log('did not update user(s) because of >>>', error);
     }
 }
-// @todo run updateUser function below
 
-// DELETE
 async function deleteUser() {
     try {
         let numOfRowsDeleted = await db.user.destroy({
@@ -86,4 +71,3 @@ async function deleteUser() {
         console.log('did not delete user(s) because of >>>', error);
     }
 }
-// @todo run deleteUser function below

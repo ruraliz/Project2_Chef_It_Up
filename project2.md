@@ -34,8 +34,8 @@ In the space below:
 ### User Stories
 As a recent graduate living alone I want to be able to
     1. Search up food recepies based on my current diet 
-    2. save my favorite recipies for future use 
-    3. recommend recipies to other users 
+    2. Save my favorite recipies for future use 
+    3. Comment on recipes and delete recipes I no longer need from my favorite list 
 ----------------------------------------------------------
 ### Wireframes
 <img width="1308" alt="Screen Shot 2022-09-13 at 7 57 48 PM" src="https://user-images.githubusercontent.com/107972391/190050425-d468351a-28de-408e-9ebf-507b51c31bbb.png">
