@@ -16,7 +16,7 @@ app.use(methodOverride('_method'));
 app.use(require('morgan')('dev'));
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public')); // allows to see our public folders(css etc)
+app.use(express.static(__dirname + '/public')); 
 app.use(layouts);
 
 app.use(session({
@@ -39,14 +39,14 @@ app.get('/', (req, res) => {
 })
 
 
-//access to all of our auth routes GET/auth/login GET auth/signup POST routes
+
 app.use('/auth', require('./controllers/auth'));
 
 app.get('/about', (req, res) => {
   res.render('about')
 })
 
-// Add this above /auth controllers
+
 app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
   res.render('profile', { id, name, email });

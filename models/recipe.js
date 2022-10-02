@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     recipeCalories: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     img: DataTypes.STRING(2000),
-    ingredients: DataTypes.ARRAY(DataTypes.STRING),
+    ingredients: DataTypes.ARRAY(DataTypes.STRING(2000)),
     url: DataTypes.STRING,
     dietLabels: DataTypes.STRING,
     totalNutrients: DataTypes.STRING,

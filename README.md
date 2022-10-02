@@ -82,6 +82,8 @@ npm install bcryptjs connect-flash passport passport-local express-session metho
 git add .
 git commit -m "Install dependencies for project"
 ```
+`4` to get access to API
+
 
 ## Wireframe
 <img src= "public/assets/Wireframe.jpg">
@@ -99,6 +101,30 @@ git commit -m "Install dependencies for project"
 - Make better styling for the 'My recipes" page so that it looks like the example format on screenshots in the home page. 
 
 
+
+
+
+
+Installations Instructions
+git clone https://github.com/romebell/supreme-engine.git
+cd supreme-engine
+npm install
+touch .env
+and add inside .env file
+SECRET_SESSION=yaaaaaaayayyyyyayyayay
+If there an API key
+go to said webiste and get an API KEY
+put this inside of their .env file
+API_KEY=.......
+create a database
+npm install sequelize-cl
+npx sequelize-cli db:create supreme-engine
+migrate their database
+npx sequelize-cli db:migrate
+if they need to seed data
+npx sequelize-cli db:seed:all
+Start the server
+npm start
 
 
 

@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const db = require('../models');
 const recipe = require('../models/recipe');
+const { randAwsRequestId } = require('@ngneat/falso');
 
 
 
@@ -39,7 +40,7 @@ router.post('/new', async (req, res) => {
         userId: parseInt(req.body.userId),
         img:req.body.img,
         url: req.body.url,
-        ingredients: req.body.listIngredients,
+        ingredients: [req.body.listIngredients],
         totalNutrients: req.body.totalNutrients,
         dietLabels: req.body.dietLabels,
         mealType: req.body.mealType,
@@ -59,13 +60,13 @@ router.post('/new', async (req, res) => {
 router.post('/:id/comments', async (req, res) => {
     const createdDate = new Date().toISOString();
     await db.recipe.findOne({
-      where: { id: req.params.id }
+      where: { id: req.params.id}, include: {model:db.user, as:'user'}
     })
     .then((recipe) => {
       if (!recipe) throw Error()
         db.comment.create({
         recipeId: parseInt(req.params.id),
-        userId: parseInt(req.params.id),
+        userId: parseInt(req.user.id),
         name: req.body.name,
         content: req.body.content,
         createdAt: createdDate,
@@ -76,7 +77,7 @@ router.post('/:id/comments', async (req, res) => {
     })
     .catch((error) => {
       console.log(error)
-      res.status(400).render('main/404')
+      res.status(400).render('404')
     })
   })
   
@@ -109,7 +110,7 @@ router.post('/results', (req, res) => {
         console.log('delete recipe')
     
         let recipesDeleted = await db.recipe.destroy({
-            where: { id: req.params.id }
+            where: { id: req.params.id} , include: [{model: db.comment, as: 'comment'}]
         });
         console.log('==== this is the delete route ======');
         console.log('Amount of recipes deleted', recipesDeleted);

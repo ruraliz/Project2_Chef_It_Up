@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.STRING(2000)
       },
       ingredients: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING(2000))
       },
       url: {
         type: Sequelize.STRING

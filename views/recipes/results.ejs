@@ -17,12 +17,12 @@
                
                 <td> 
                     <form method="POST" action="/recipes/new">
-                        <% const ingredients = recipe.recipe.ingredientLines%>
-                        <% for( let i=0; i < ingredients.length; i++) { %>
-                    <%= ingredients[i] %>
-                
-                    <input type="text" value=<%= (JSON.stringify(recipe.recipe.ingredients[i])).split(' ').join('-')%> name="listIngredients" hidden > 
+                        <% const allIngredients = recipe.recipe.ingredientLines%>
+                        <% for( let i=0; i < allIngredients.length; i++) { %>
+                    <%= allIngredients[i] %>
                     <%}%>
+                    <input type="text" value=<%= (JSON.stringify(recipe.recipe.ingredientLines)).split(' ').join('-')%> name="listIngredients" hidden > 
+                
                 </td>  
                  <td>      
                     <input type="text" value=<%= recipe.recipe.image%> name="img" hidden > 
