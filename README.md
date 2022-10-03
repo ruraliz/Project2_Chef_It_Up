@@ -134,10 +134,9 @@ Set up production settings in config.json
       }
   }
  ```
-## `5` HEROKU DEPLOYMENT cont
 git add, commit, push to Github first, then
 git push heroku main
-`Step 12`: Migrate database
+`Step 12` . Migrate database
 Enter bash terminal on Heroku
 heroku run bash
 Migrate database
