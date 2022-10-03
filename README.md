@@ -152,8 +152,7 @@ Alternatively, the url will be using the name you gave your app in the url like 
 You can connect to your server with Postico by getting the db url from heroku config
 Connect to it in Postico as a new favorite with the host as your DATABASE_URL
 You should be able to see your live database now
-====================================================
-AFTER DEPLOYMENT
+`14` . AFTER DEPLOYMENT
 after making changes to local app, then you want to add, commit, and push to Github
 afterwards run the command
 git push heroku main
