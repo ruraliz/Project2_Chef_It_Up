@@ -133,10 +133,11 @@ Set up production settings in config.json
         }
       }
   }
- ``` 
-`step 12`: git add, commit, push to Github first, then
+ ```
+## `5` HEROKU DEPLOYMENT cont
+git add, commit, push to Github first, then
 git push heroku main
-`Step 13`: Migrate database
+`Step 12`: Migrate database
 Enter bash terminal on Heroku
 heroku run bash
 Migrate database
@@ -145,7 +146,7 @@ If you need to seed database, run the following:
  npx sequelize-cli db:seed:all
 Exit bash
 exit 
-`Step 14`. Test your website by creating a new user!
+`Step 13`. Test your website by creating a new user!
 Open your app with
 heroku open
 Alternatively, the url will be using the name you gave your app in the url like so: https://name-of-your-app.heroku.com
