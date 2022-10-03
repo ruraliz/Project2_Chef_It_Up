@@ -2,7 +2,7 @@
 
 This app was made to create a quick and easy way for people who love or want to cook more from home to be able to access a variety of recipes. 
 
-#### Backstory: BlogPulse
+#### Backstory: Chef It Up 
 
 As a recent college graduate, I found myself for the first time in a situation where I was at home alone having to cook for myself every day. Not only did I start to run out of ideas, the ingredients in my fridge often went to waste and I ended up ordering food online, which is both expensive and unhealthy. Through this app I hope that other people in similar situation as me can find it easy to access many different recipes out there. 
 
@@ -57,6 +57,9 @@ As a new member of cooking from home team I want to be able to
 
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
+-  `git clone ` https://github.com/ruraliz/Project2_Chef_It_Up.git
+- cd into 'project2_Chef_It_Up
+- [method-override]
 
 `2` Now we are going to install the current dependencies that are listed inside of `package.json`
 ```text
@@ -76,14 +79,84 @@ npm install bcryptjs connect-flash passport passport-local express-session metho
 - [express-session](https://github.com/expressjs/session): Create a session middleware with given *options*.
 - [method-override](https://github.com/expressjs/method-override): Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
 
-`4` Make a commit
+`4` touch .env to add `.env` directory and in `.env` file add `SECRET_SESSION`=alldayidreamaboutsoftwareengineering
 
+`5` Make a commit
 ```text
 git add .
 git commit -m "Install dependencies for project"
 ```
-`4` to get access to API
+## `2` Getting project to work 
 
+`1` to get access to API
+ got to "https://rapidapi.com" to find the recipe-search API or go to  https://rapidapi.com/edamam/api/recipe-search-and-diet to get  'X-RapidAPI-Key' and  'X-RapidAPI-Host'.
+
+`2` Create Database
+- npm install sequelize-cl
+- npx sequelize-cli db:create chef-it-up
+
+`3` Migrate their database
+- npx sequelize-cli db:migrate
+- If need to seed data: npm sequelize-cli db:seed:all
+`4` To start Server: npm start
+`5` HEROKU DEPLOYMENT
+`Step 1`: Make sure node_modules/ is in .gitignore
+`Step 2`. Make sure you're app is listening for a PORT in the ENV =>  app.listen(process.env.PORT || 3000)
+`Step 3`. Get an account with Heroku ( heroku.com )
+`Step 4`. Install Heroku on local machine
+brew tap heroku/brew && brew install heroku
+`Step 5`. Log into Heroku on Terminal
+heroku login
+`Step 6`. Install sequelize-cli for Heroku to
+npm i sequelize-cli
+`Step 7`. Add node server.js to script inside `package.json`
+`Step 8`. Host the app with
+heroku apps:create name-of-your-app
+`Step 9`.  Check for Heroku with git remote -v  and commit to Github with add, commit, push
+`Step 10`.  Set up the database with heroku
+heroku config:set SECRET_SESSION=supersecretkey
+  Add everything in .env to Heroku this way
+`Step 11`. Create your database!
+Install Postgres on Heroku with
+heroku addons:create heroku-postgresql:hobby-dev
+Check for db with
+heroku config
+Set up production settings in config.json
+``` javascript
+"production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
+      }
+  }
+ ``` 
+git add, commit, push to Github first, then
+git push heroku main
+`Step 12`: Migrate database
+Enter bash terminal on Heroku
+heroku run bash
+Migrate database
+npx sequelize-cli db:migrate
+If you need to seed database, run the following:
+ npx sequelize-cli db:seed:all
+Exit bash
+exit 
+`Step 13`. Test your website by creating a new user!
+Open your app with
+heroku open
+Alternatively, the url will be using the name you gave your app in the url like so: https://name-of-your-app.heroku.com
+You can connect to your server with Postico by getting the db url from heroku config
+Connect to it in Postico as a new favorite with the host as your DATABASE_URL
+You should be able to see your live database now
+====================================================
+AFTER DEPLOYMENT
+after making changes to local app, then you want to add, commit, and push to Github
+afterwards run the command
+git push heroku main
 
 ## Wireframe
 <img src= "public/assets/Wireframe.jpg">
@@ -102,29 +175,6 @@ git commit -m "Install dependencies for project"
 
 
 
-
-
-
-Installations Instructions
-git clone https://github.com/romebell/supreme-engine.git
-cd supreme-engine
-npm install
-touch .env
-and add inside .env file
-SECRET_SESSION=yaaaaaaayayyyyyayyayay
-If there an API key
-go to said webiste and get an API KEY
-put this inside of their .env file
-API_KEY=.......
-create a database
-npm install sequelize-cl
-npx sequelize-cli db:create supreme-engine
-migrate their database
-npx sequelize-cli db:migrate
-if they need to seed data
-npx sequelize-cli db:seed:all
-Start the server
-npm start
 
 
 
