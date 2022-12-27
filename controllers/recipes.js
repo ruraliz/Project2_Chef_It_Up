@@ -110,7 +110,7 @@ router.post('/results', (req, res) => {
         console.log('delete recipe')
     
         let recipesDeleted = await db.recipe.destroy({
-            where: { id: req.params.id} , include: [{model: db.comment, as: 'comment'}]
+            where: { id: req.params.id} , include: [{model: db.comment, as: 'comments'}]
         });
         console.log('==== this is the delete route ======');
         console.log('Amount of recipes deleted', recipesDeleted);
